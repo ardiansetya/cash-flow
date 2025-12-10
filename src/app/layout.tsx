@@ -1,8 +1,10 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans  } from "next/font/google";
 
+import { AppSidebar } from "~/components/shared/AppSidebar";
+import { SidebarProvider } from "~/components/ui/sidebar";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
@@ -11,18 +13,23 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-jakarta-sans",
 });
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable}`}>
+    <html lang="en" className={`${plusJakarta.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex min-h-screen flex-col">{children}</main>
+          </SidebarProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );
