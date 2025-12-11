@@ -1,11 +1,15 @@
-import { BreadcrumbWithCustomSeparator } from "~/components/shared/BreadcrumbsCustom";
 import Header from "~/components/shared/Header";
-import { SidebarTrigger } from "~/components/ui/sidebar";
+import HeroSection from "~/components/shared/HeroSection";
+import InsightCard from "~/components/shared/InsightCard";
 
 const Home = () => {
   return (
     <div className="px-4 py-4">
-      <Header/>
+      <div className="flex flex-col gap-4">
+        <Header />
+        <HeroSection />
+        <InsightCard/>
+      </div>
     </div>
   );
 };
