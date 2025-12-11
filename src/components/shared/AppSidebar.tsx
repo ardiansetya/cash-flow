@@ -15,6 +15,7 @@ import {
 import { cn } from "~/lib/utils";
 import { Separator } from "../ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import UserFooter from "./UserFooter";
 
 // Menu items.
 const items = [
@@ -70,12 +71,7 @@ export function AppSidebar() {
       </SidebarContent>
       <Separator/>
       <SidebarFooter>
-        <div>
-            <Avatar>
-                <AvatarImage src="/images/avatar.jpg" />
-                <AvatarFallback>Ko</AvatarFallback>
-            </Avatar>
-        </div>
+        <UserFooter/>
       </SidebarFooter>
     </Sidebar>
   );

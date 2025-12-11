@@ -4,7 +4,7 @@ import { SidebarTrigger } from "~/components/ui/sidebar";
 
 const Home = () => {
   return (
-    <div className="mx-4 my-4">
+    <div className="px-4 py-4">
       <Header/>
     </div>
   );
