@@ -1,6 +1,8 @@
 import Header from "~/components/shared/Header";
 import HeroSection from "~/components/shared/HeroSection";
 import InsightCard from "~/components/shared/InsightCard";
+import RecentsTransactions from "~/components/shared/RecentsTransactions";
+import { SpendingChart } from "~/components/shared/SpendingChart";
 
 const Home = () => {
   return (
@@ -9,6 +11,8 @@ const Home = () => {
         <Header />
         <HeroSection />
         <InsightCard/>
+        <RecentsTransactions/>
+        <SpendingChart/>
       </div>
     </div>
   );
