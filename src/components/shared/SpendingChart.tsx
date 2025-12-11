@@ -1,9 +1,10 @@
 "use client";
 
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Pie, PieChart } from "recharts";
 
 import {
   type ChartConfig,
+  ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "~/components/ui/chart";
@@ -11,7 +12,6 @@ import { getSpendingByCategory } from "~/lib/mockData";
 import { Card, CardHeader } from "../ui/card";
 
 const data = getSpendingByCategory();
-
 
 const chartConfig = {
   desktop: {
@@ -33,27 +33,25 @@ export function SpendingChart() {
           <p className="text-muted-foreground text-xs">Tanggal</p>
         </div>
       </CardHeader>
-      <div className="size-40">
-        <ResponsiveContainer width="100%" height="100%" className="">
-          <PieChart accessibilityLayer data={data}>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={45}
-              outerRadius={75}
-              paddingAngle={2}
-              dataKey="value"
-              fill="var(--color-desktop)"
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <ChartTooltip content={<ChartTooltipContent />} />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
+      <ChartContainer config={chartConfig} className="h-[120px] w-[500px]">
+        <PieChart width={500} height={500} accessibilityLayer data={data}>
+          <Pie
+            data={data}
+            cx="40%"
+            cy="50%"
+            innerRadius={35}
+            outerRadius={60}
+            paddingAngle={2}
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell key={index} fill={entry.color} />
+            ))}
+          </Pie>
+
+          <ChartTooltip content={<ChartTooltipContent />} />
+        </PieChart>
+      </ChartContainer>
     </Card>
   );
 }

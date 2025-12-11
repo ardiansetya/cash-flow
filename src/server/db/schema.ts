@@ -2,10 +2,12 @@ import { relations } from "drizzle-orm";
 import {
   boolean,
   index,
+  integer,
   pgTable,
   pgTableCreator,
   text,
   timestamp,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 export const createTable = pgTableCreator((name) => `pg-drizzle_${name}`);
@@ -39,12 +41,39 @@ export const user = pgTable("user", {
     .$defaultFn(() => false)
     .notNull(),
   image: text("image"),
+  university: text("university"),
+  major: text("major"),
+  monthlyAllowance: integer("monthly_allowance").notNull().default(0),
+  currency: text("currency").notNull().default("IDR"),
+  locale: text("locale").notNull().default("id-ID"),
   createdAt: timestamp("created_at")
     .$defaultFn(() => /* @__PURE__ */ new Date())
     .notNull(),
   updatedAt: timestamp("updated_at")
     .$defaultFn(() => /* @__PURE__ */ new Date())
     .notNull(),
+});
+
+export const budgets = pgTable("budgets", {
+  id: uuid("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  name: text("name").notNull(),
+  periodYear: integer("period_year").notNull(),
+  periodMonth: integer("period_month").notNull(),
+  startDate: timestamp("start_date").notNull(),
+  endDate: timestamp("end_date").notNull(),
+  createdAt: timestamp("created_at").notNull(),
+  updatedAt: timestamp("updated_at").notNull(),
+});
+
+export const category = pgTable("category", {
+  id: uuid("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  name: text("name").notNull(),
+  type: text("type").notNull(),
+  isDefault: boolean("is_default").notNull().default(false),
+  createdAt: timestamp("created_at").notNull(),
+  updatedAt: timestamp("updated_at").notNull(),
 });
 
 export const session = pgTable("session", {
@@ -94,6 +123,16 @@ export const verification = pgTable("verification", {
 export const userRelations = relations(user, ({ many }) => ({
   account: many(account),
   session: many(session),
+  category: many(category),
+  budgets: many(budgets),
+}));
+
+export const budgetsRelations = relations(budgets, ({ one }) => ({
+  user: one(user, { fields: [budgets.userId], references: [user.id] }),
+}));
+
+export const categoryRelations = relations(category, ({ one }) => ({
+  user: one(user, { fields: [category.userId], references: [user.id] }),
 }));
 
 export const accountRelations = relations(account, ({ one }) => ({
