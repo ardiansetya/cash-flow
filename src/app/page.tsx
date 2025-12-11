@@ -1,11 +1,13 @@
-import { SidebarTrigger } from "~/components/ui/sidebar"
+import { BreadcrumbWithCustomSeparator } from "~/components/shared/BreadcrumbsCustom";
+import Header from "~/components/shared/Header";
+import { SidebarTrigger } from "~/components/ui/sidebar";
 
 const Home = () => {
   return (
-    <div>
-      <SidebarTrigger/>
-      Home</div>
-  )
-}
+    <div className="mx-4 my-4">
+      <Header/>
+    </div>
+  );
+};
 
-export default Home
+export default Home;

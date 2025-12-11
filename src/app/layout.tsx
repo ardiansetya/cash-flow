@@ -27,7 +27,7 @@ export default function RootLayout({
         <TRPCReactProvider>
           <SidebarProvider>
             <AppSidebar />
-            <main className="flex min-h-screen flex-col">{children}</main>
+            <main className="flex-1 py-2">{children}</main>
           </SidebarProvider>
         </TRPCReactProvider>
       </body>
