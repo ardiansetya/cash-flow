@@ -2,6 +2,7 @@ import BudgetOverview from "~/components/shared/BudgetOverview";
 import Header from "~/components/shared/Header";
 import HeroSection from "~/components/shared/HeroSection";
 import InsightCard from "~/components/shared/InsightCard";
+import MyAccountCard from "~/components/shared/MyAccountCard";
 import RecentsTransactions from "~/components/shared/RecentsTransactions";
 import SavingGoals from "~/components/shared/SavingGoals";
 import { SpendingChart } from "~/components/shared/SpendingChart";
@@ -21,6 +22,7 @@ const Home = () => {
           <div className="w-2/5 space-y-4">
             <BudgetOverview />
             <SavingGoals/>
+            <MyAccountCard/>
           </div>
         </div>
       </div>
