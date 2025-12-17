@@ -1,5 +1,5 @@
 {
-  "id": "43be1cee-3f19-4abb-9511-bed5cf39c7c1",
+  "id": "c71cb18e-e067-4ee7-99d1-ddd3cd15d024",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -374,13 +374,14 @@
           "name": "current_amount",
           "type": "numeric",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "'0'"
         },
         "deadline": {
           "name": "deadline",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "note": {
           "name": "note",
@@ -551,7 +552,7 @@
           "name": "saving_goals_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "type": {
           "name": "type",
@@ -785,13 +786,15 @@
           "name": "initial_balance",
           "type": "numeric",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "'0'"
         },
         "current_balance": {
           "name": "current_balance",
           "type": "numeric",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "'0'"
         },
         "is_active": {
           "name": "is_active",
