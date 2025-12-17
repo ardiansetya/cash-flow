@@ -1,3 +1,5 @@
+"use client"
+
 import { Bell, Search } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -7,27 +9,31 @@ import { SidebarTrigger } from "../ui/sidebar";
 
 const Header = () => {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <SidebarTrigger />
-          <h1 className="text-2xl font-bold">Dashboard</h1>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <Search className="text-muted-foreground absolute top-1.5 left-2" />
-            <Input className="px-10" placeholder="Search Transactions" />
+    <header className="bg-background supports-backdrop-filter:bg-background/80 sticky top-0 z-40 backdrop-blur">
+      <div className="space-y-4 p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <SidebarTrigger />
+            <h1 className="text-2xl font-bold">Dashboard</h1>
           </div>
-          <div className="relative">
-            <Button size={"icon-lg"} variant={"ghost"}>
-              <Badge className="bg-destructive absolute -top-1 right-0 size-4">3</Badge>
-              <Bell />
-            </Button>
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <Search className="text-muted-foreground absolute top-1.5 left-2" />
+              <Input className="px-10" placeholder="Search Transactions" />
+            </div>
+            <div className="relative">
+              <Button size={"icon-lg"} variant={"ghost"}>
+                <Badge className="bg-destructive absolute -top-1 right-0 size-4">
+                  3
+                </Badge>
+                <Bell />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-      <Separator />
-    </div>
+        <Separator />
+    </header>
   );
 };
 

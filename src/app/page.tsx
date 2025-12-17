@@ -9,24 +9,26 @@ import { SpendingChart } from "~/components/shared/SpendingChart";
 
 const Home = () => {
   return (
-    <div className="px-4 py-4">
-      <div className="flex flex-col gap-4">
-        <Header />
-        <HeroSection />
-        <InsightCard />
-        <div className="flex gap-4">
-          <div className="w-3/5 space-y-4">
-            <RecentsTransactions />
-            <SpendingChart />
-          </div>
-          <div className="w-2/5 space-y-4">
-            <BudgetOverview />
-            <SavingGoals/>
-            <MyAccountCard/>
+    <>
+      <Header />
+      <div className="p-4">
+        <div className="flex flex-col gap-4">
+          <HeroSection />
+          <InsightCard />
+          <div className="flex gap-4">
+            <div className="w-3/5 space-y-4">
+              <RecentsTransactions />
+              <SpendingChart />
+            </div>
+            <div className="w-2/5 space-y-4">
+              <BudgetOverview />
+              <SavingGoals />
+              <MyAccountCard />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
